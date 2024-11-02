@@ -1,0 +1,77 @@
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f4f8;
+    min-height: 100vh;
+  }
+  
+  .square {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  #tabla-precios {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+  }
+  
+  
+  #headertabla-precios {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    background-color: #49c84d; 
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .fila:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .fila div {
+    padding: 5px;
+  }
+  
+  
+  .fila div:nth-child(2) {
+    font-weight: bold;
+    color: #49c84d; 
+  }
+  
+  
+  .fila div:last-child {
+    text-align: center;
+    color: #d32f2f; }
+  
+  
+  .fila:hover {
+    background-color: #e3f2fd;
+  }
+  
+  
+    
+    .square {
+      padding: 15px;
+    }
+  

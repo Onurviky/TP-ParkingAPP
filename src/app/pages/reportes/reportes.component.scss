@@ -1,0 +1,75 @@
+@use "./../../../../public/style/colores.scss";
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: auto;
+  }
+  
+  
+  .square {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; 
+  }
+  
+  
+  #tabla-reportes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+ 
+  #headertabla-reportes {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    background-color: #49c84d;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+ 
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .fila:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .fila div {
+    padding: 5px;
+    text-align: left;
+  }
+  
+  
+  .fila:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .fila div:last-child {
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  
+    .square {
+      padding: 15px;
+    }
+  

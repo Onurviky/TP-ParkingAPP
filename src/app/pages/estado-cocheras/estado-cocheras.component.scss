@@ -1,0 +1,55 @@
+@use "./../../../../public/style/colores.scss";
+
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+#tabla{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
+    
+        #header-tabla{
+            font-size: larger;
+        }
+        >div {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr 1fr;
+        padding:1%;
+        border-bottom: 1px solid black;
+        text-align: center; 
+        }
+}
+.HL{
+    display: flex;
+    width: 100vw;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ocupado{
+    background-color: colores.$color-noDisponible;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+.disponible{
+    background-color:colores.$color-Disponible;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.CDisp{
+    height: 30px;
+    width: 20px;
+    display: flex;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}

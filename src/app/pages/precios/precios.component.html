@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="background">
+    <div class="square">
+      <div id="tabla-precios">
+        <!-- Encabezado de la tabla -->
+        <div id="headertabla-precios">
+          <div>{{ headerP.tiempo }}</div>
+          <div>{{ headerP.costo }}</div>
+          <div>{{ headerP.acciones }}</div>
+        </div>
+        <div *ngFor="let fila of filasPrecios" class="fila">
+          <div>{{ fila.tiempo }}</div>
+          <div>{{ fila.costo  }}</div>
+          <div>{{ fila.acciones ? 'Disponible' : 'No Disponible' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>

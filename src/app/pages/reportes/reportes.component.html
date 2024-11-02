@@ -1,0 +1,21 @@
+<app-header> </app-header>
+
+<div class="background">
+    <div class="square">
+      <div id="tabla-reportes">
+        <div id="headertabla-reportes">
+          <div>{{ headerR.nro }}</div>
+          <div>{{ headerR.mes }}</div>
+          <div>{{ headerR.usos }}</div>
+          <div>{{ headerR.cobrado }}</div>
+        </div>
+  
+        <div *ngFor="let reporte of reporteEstacionamientos" class="fila">
+          <div>{{ reporte.nro }}</div>
+          <div>{{ reporte.mes }}</div>
+          <div>{{ reporte.usos }}</div>
+          <div>{{ reporte.cobrado }}</div> <!-- Formato de moneda -->
+        </div>
+      </div>
+    </div>
+  </div>

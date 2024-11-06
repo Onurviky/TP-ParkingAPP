@@ -1,40 +1,97 @@
 <app-header></app-header>
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
 
-
 <div>
-<div id="tabla">   
-    <div id="header-tabla">
-        <div>NRO</div>
-        <div>DISPONIBILIDAD</div>
-        <div>INGRESO</div>
-        <div>ACCIONES</div>
-      </div>
-      <div *ngFor="let fila of filas; let i = index; trackBy: trackById" class="fila-class">
-        <!-- Número de fila -->
-        <div>{{ i + 1 }}</div>
-        <div>
-          <!-- Mostrar patente si la cochera está activa -->
-          <div *ngIf="fila.activo" class="patente" (click)="cerrarModalEstacionamiento(fila.id, fila.activo.patente)">
-            {{ fila.activo.patente }}
-          </div>
-          <div *ngIf="!fila.activo && fila.deshabilitada" (click)="ModalNoDisponible()">
-            <span class="ocupado">No disponible</span>
-          </div>
-          <!-- Mostrar "Disponible" si no está activa ni deshabilitada -->
-          <div *ngIf="!fila.activo && !fila.deshabilitada" (click)="abrirModalEstacionamiento(fila.id)">
-            <span class="disponible">Disponible</span>
-          </div>
+    <div class="container">
+        <!-- Header principal -->
+        <div class="header">
+        <h1>{{ titulo }}</h1>
         </div>
-        <div>{{ fila.activo?.horaIngreso }}</div>
-        <div class="acciones-container">
-          <i [ngClass]="fila.deshabilitada ? 'bx bx-check' : 'bx bx-minus-circle'"
-             (click)="cambiarDisponibilidadCochera(i); $event.stopPropagation()">
-          </i>
-          <i class="bx bx-trash" (click)="eliminarFila(fila.id); $event.stopPropagation()"></i>
+
+        <!-- Tabla principal -->
+        <div class="tabla-container">
+<!-- Tabla de cocheras -->
+<div class="tabla">
+            <!-- Cabecera de la tabla -->
+            <div class="header-tabla">
+            <div class="columna">NRO</div>
+            <div class="columna">DISPONIBILIDAD</div>
+            <div class="columna">INGRESO</div>
+            <div class="columna">ACCIONES</div>
         </div>
+    
+            <!-- Filas de la tabla -->
+            <div class="fila" *ngFor="let fila of filas; let i = index">
+            <!-- Número de cochera -->
+            <div class="columna numero">
+                {{ i + 1 }}
+            </div>
+
+            <!-- Estado y patente -->
+            <div class="columna estado">
+                <!-- Cuando hay un vehículo estacionado -->
+                <div 
+                  *ngIf="fila.activo" 
+                class="estado-item patente"
+                (click)="cerrarModalEstacionamiento(fila.id, fila.activo.patente)">
+                <span class="patente-texto">{{ fila.activo.patente }}</span>
+                <span class="estado-badge ocupado">Ocupado</span>
+                </div>
+      
+                <!-- Cuando está deshabilitada -->
+                <div 
+                  *ngIf="!fila.activo && fila.deshabilitada" 
+                class="estado-item no-disponible"
+                (click)="ModalNoDisponible()">
+                <span class="estado-badge deshabilitado">No disponible</span>
+                </div>
+
+                <!-- Cuando está libre -->
+                <div 
+                  *ngIf="!fila.activo && !fila.deshabilitada" 
+                class="estado-item disponible"
+                (click)="abrirModalEstacionamiento(fila.id)">
+                <span class="estado-badge libre">Disponible</span>
+                </div>
+            </div>
+    
+            <!-- Hora de ingreso -->
+            <div class="columna hora">
+                <span *ngIf="fila.activo?.horaIngreso">
+            {{ fila.activo?.horaIngreso | date:'dd/MM/yyyy HH:mm:ss' }} 
+                </span>
+              </div>
+      
+              <!-- Acciones -->
+              <div class="columna acciones">
+                <!-- Botón habilitar/deshabilitar -->
+                <button 
+                  class="btn-accion"
+                  [class.btn-habilitar]="fila.deshabilitada"
+                  [class.btn-deshabilitar]="!fila.deshabilitada"
+                  (click)="cambiarDisponibilidadCochera(i)">
+                  {{ fila.deshabilitada ? 'Habilitar' : 'Deshabilitar' }}
+                </button>
+      
+                <!-- Botón eliminar -->
+                <button 
+                  class="btn-accion btn-eliminar"
+                  (click)="eliminarFila(fila.id)">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Botón para agregar nueva cochera -->
+          <div class="acciones-container">
+            <button 
+              class="btn-agregar"
+              (click)="agregarFila()">
+              Agregar cochera
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="HL">
-      <button class="btn-lindo" (click)="agregarFila()">Agregar fila</button> 
-    </div>
+      
+        </div>

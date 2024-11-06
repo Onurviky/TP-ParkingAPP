@@ -1,55 +1,199 @@
+
 @use "./../../../../public/style/colores.scss";
 
-header{
-    display: flex;
-    flex-direction: row;
-}
-
-#tabla{
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    margin: 5px 10px;
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    margin-bottom: 25px;
     
-        #header-tabla{
-            font-size: larger;
-        }
-        >div {
-        display: grid;
-        grid-template-columns: 50px 1fr 1fr 1fr;
-        padding:1%;
-        border-bottom: 1px solid black;
-        text-align: center; 
-        }
-}
-.HL{
-    display: flex;
-    width: 100vw;
-    align-self: center;
-    align-content: center;
-    justify-content: center;
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+  
+  .tabla-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .tabla {
+    width: 100%;
+  }
+  
+  .header-tabla {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    display: grid;
+    grid-template-columns: 80px 1fr 200px 250px;
+    padding: 15px;
+  
+    .columna {
+      color: #495057;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
+  
+  .fila {
+    display: grid;
+    grid-template-columns: 80px 1fr 200px 250px;
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
     align-items: center;
-    
-}
-
-.ocupado{
-    background-color: colores.$color-noDisponible;
-    border-radius: 10px;
-    padding: 5px;
-
-}
-.disponible{
-    background-color:colores.$color-Disponible;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.CDisp{
-    height: 30px;
-    width: 20px;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  
+    .columna {
+      &.numero {
+        color: #495057;
+        font-weight: 500;
+      }
+  
+      &.estado {
+        .estado-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 5px;
+          border-radius: 6px;
+          cursor: pointer;
+          
+          &.patente {
+            .patente-texto {
+              font-weight: 600;
+              color: #2c3e50;
+            }
+          }
+        }
+  
+        .estado-badge {
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 13px;
+          font-weight: 500;
+  
+          &.ocupado {
+            background-color: #fff3cd;
+            color: #856404;
+          }
+  
+          &.deshabilitado {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+  
+          &.libre {
+            background-color: #d4edda;
+            color: #155724;
+          }
+        }
+      }
+  
+      &.hora {
+        color: #6c757d;
+        font-size: 14px;
+      }
+  
+      &.acciones {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+    }
+  }
+  
+  .btn-accion {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  
+    &.btn-habilitar {
+      background-color: #28a745;
+      color: white;
+  
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  
+    &.btn-deshabilitar {
+      background-color: #ffc107;
+      color: #212529;
+  
+      &:hover {
+        background-color: #e0a800;
+      }
+    }
+  
+    &.btn-eliminar {
+      background-color: #dc3545;
+      color: white;
+  
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+  
+  .acciones-container {
+    padding: 20px;
     display: flex;
-    align-self: center;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
+    justify-content: flex-end;
+    border-top: 1px solid #e9ecef;
+  
+    .btn-agregar {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &:before {
+        content: '+';
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+  
+  // Responsive
+  @media (max-width: 768px) {
+    .header-tabla,
+    .fila {
+      grid-template-columns: 60px 1fr 150px 200px;
+    }
+  
+    .btn-accion {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  
+  
